@@ -1,0 +1,329 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>深度学习小白记(0)-开发环境安装教程 | Decodeaz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="XY">
+    
+    <meta name="description" content="一，在windows 10 64位系统下安装keras环境(GPU运算)
+备注：我的电脑配置为Intel i7 + Nvidia GT 750M
+1.安装基础工具 Microsoft Visual Studio 2013下载：http://pan.baidu.com/s/1kT837qn密钥：BWG">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Decodeaz&#39;s Blog" title="Decodeaz&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Decodeaz&#39;s Blog">Decodeaz&#39;s Blog</a></h1>
+				<h2 class="blog-motto">我的混乱数据~</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">存档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/07/深度学习小白记/" title="深度学习小白记(0)-开发环境安装教程" itemprop="url">深度学习小白记(0)-开发环境安装教程</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="XY">XY</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-05-07T07:48:52.301Z" itemprop="datePublished">2017-05-07</time>
+    更新日期:<time datetime="2017-05-07T09:08:52.717Z" itemprop="dateModified">2017-05-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一，在windows-10-64位系统下安装keras环境-GPU运算"><span class="toc-number">1.</span> <span class="toc-text">一，在windows 10 64位系统下安装keras环境(GPU运算)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装基础工具-Microsoft-Visual-Studio-2013"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装基础工具 Microsoft Visual Studio 2013</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装Python环境-推荐Anaconda"><span class="toc-number">1.2.</span> <span class="toc-text">2.安装Python环境 - 推荐Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（1）安装Anaconda"><span class="toc-number">1.2.1.</span> <span class="toc-text">（1）安装Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）安装Mingw，添加相关环境变量"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">（2）安装Mingw，添加相关环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）安装keras相关模块"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">（3）安装keras相关模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装核心工具-CUDA-Toolkit"><span class="toc-number">1.2.2.</span> <span class="toc-text">3.安装核心工具 CUDA Toolkit</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）下载cuda7-5源文件"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">（1）下载cuda7.5源文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）环境变量配置"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">（2）环境变量配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）加速库CuDNN（可选）"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">（3）加速库CuDNN（可选）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试对比"><span class="toc-number">1.2.3.</span> <span class="toc-text">4.测试对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二，在Ubuntu-14-04-64位系统下安装keras环境-GPU运算"><span class="toc-number">2.</span> <span class="toc-text">二，在Ubuntu 14.04 64位系统下安装keras环境(GPU运算)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-系统初始配置与依赖库的安装"><span class="toc-number">2.1.</span> <span class="toc-text">1.系统初始配置与依赖库的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CUDA-Toolkit的安装"><span class="toc-number">2.2.</span> <span class="toc-text">2.CUDA Toolkit的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Theano以及Keras的安装"><span class="toc-number">2.3.</span> <span class="toc-text">3.Theano以及Keras的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-测试"><span class="toc-number">2.4.</span> <span class="toc-text">3.测试</span></a></li></ol></li></ol>
+		</div>
+		
+		<h1 id="一，在windows-10-64位系统下安装keras环境-GPU运算"><a href="#一，在windows-10-64位系统下安装keras环境-GPU运算" class="headerlink" title="一，在windows 10 64位系统下安装keras环境(GPU运算)"></a>一，在windows 10 64位系统下安装keras环境(GPU运算)</h1><blockquote>
+<p>备注：我的电脑配置为Intel i7 + Nvidia GT 750M</p>
+<h2 id="1-安装基础工具-Microsoft-Visual-Studio-2013"><a href="#1-安装基础工具-Microsoft-Visual-Studio-2013" class="headerlink" title="1.安装基础工具 Microsoft Visual Studio 2013"></a>1.安装基础工具 Microsoft Visual Studio 2013</h2><p>下载：<a href="http://pan.baidu.com/s/1kT837qn" target="_blank" rel="external">http://pan.baidu.com/s/1kT837qn</a><br>密钥：BWG7X-J98B3-W34RT-33B3R-JVYW9</p>
+<h2 id="2-安装Python环境-推荐Anaconda"><a href="#2-安装Python环境-推荐Anaconda" class="headerlink" title="2.安装Python环境 - 推荐Anaconda"></a>2.安装Python环境 - 推荐Anaconda</h2><h3 id="（1）安装Anaconda"><a href="#（1）安装Anaconda" class="headerlink" title="（1）安装Anaconda"></a>（1）安装Anaconda</h3><p>Anaconda是Python众多发行版中非常适用于科学计算的版本，里面已经集成了很多优秀的科学计算Python库，如numpy，scipy。 对于搞科学计算与深度学习的朋友们，建议安装Anconda2.7版本，如果需要做文本处理，建议3.5 版本。安装时请同意默认Anaconda作为Anaconda作为默认python路径，那么环境变量不需要再次配置了。</p>
+<p>下载：<a href="https://www.continuum.io/downloads（请选择适合自己的版本）" target="_blank" rel="external">https://www.continuum.io/downloads（请选择适合自己的版本）</a></p>
+<p>安装成功后，打开cmd，输入python，查看是否出现如下图：<br><img src="/2017/05/07/深度学习小白记/安装成功.png" alt=""></p>
+<h4 id="（2）安装Mingw，添加相关环境变量"><a href="#（2）安装Mingw，添加相关环境变量" class="headerlink" title="（2）安装Mingw，添加相关环境变量"></a>（2）安装Mingw，添加相关环境变量</h4><p>Anaconda官方库中集成了软件包Mingw，里面包含了gcc/g++等编译工具。打开cmd，输入 <strong>conda install mingw libpython</strong> ，等待自动安装。<br>把Anaconda相关的路径添加到环境变量path中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">C:\Anaconda\M<span class="keyword">in</span>GW\x86_64-w64-mingw32\include</div><div class="line">C:\Anaconda\M<span class="keyword">in</span>GW\x86_64-w64-mingw32\lib</div><div class="line">C:\Anaconda\M<span class="keyword">in</span>GW\bin</div><div class="line">C:\Anaconda</div><div class="line">C:\Anaconda\Scripts</div></pre></td></tr></table></figure></p>
+<p>同时新建变量<strong>PYTHONPATH</strong>，并添加<strong> C:\Anaconda2\Lib\site-packages\theano </strong></p>
+<p><img src="/2017/05/07/深度学习小白记/添加环境变量.png" alt=""></p>
+<h4 id="（3）安装keras相关模块"><a href="#（3）安装keras相关模块" class="headerlink" title="（3）安装keras相关模块"></a>（3）安装keras相关模块</h4><p>使用pip指令安装下列模块<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pip install theano</div><div class="line">pip install keras</div><div class="line">pip insatll h5py</div><div class="line">pip install opencv_python<span class="number">-2.4</span><span class="number">.13</span>-cp27-cp27m-win_amd64.whl</div></pre></td></tr></table></figure></p>
+<p>安装完成，在python终端输入<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> keras</div></pre></td></tr></table></figure></p>
+<p>没有错误应该返回如下(这时候Theano默认是使用CPU运算)：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Using <span class="string">"Theano"</span> backend.</div></pre></td></tr></table></figure></p>
+<p><strong>`注：在用户目录下（比如C:\Users\XXX\）新建一个文本文件，命名为.theanorc.txt，<br>然后如下编辑保存，再次在cmd中运行，应当是可以用cpu跑起来theano了</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">global</span>] </div><div class="line">openmp=<span class="keyword">False</span> </div><div class="line">device = cpu </div><div class="line">floatX = float32 </div><div class="line">allow_input_downcast=<span class="keyword">True</span></div><div class="line">allow_output_prealloc =<span class="keyword">False</span></div><div class="line">allow_gc = <span class="keyword">True</span> </div><div class="line">[dnn]</div><div class="line">enabled = <span class="keyword">True</span></div><div class="line">[blas] </div><div class="line">ldflags= </div><div class="line">[gcc] </div><div class="line">cxxflags=-IC:\Anaconda2\MinGW</div><div class="line">[nvcc] </div><div class="line">flags = -LC:\Anaconda2\libs</div><div class="line">compiler_bindir = C:\Program Files (x86)\Microsoft Visual Studio <span class="number">12.0</span>\VC\bin</div><div class="line">fastmath = <span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<p>若device改成gpu，可能会出现错误警告，这是正常的，我们还需要安装下面的配置</p>
+<h3 id="3-安装核心工具-CUDA-Toolkit"><a href="#3-安装核心工具-CUDA-Toolkit" class="headerlink" title="3.安装核心工具 CUDA Toolkit"></a>3.安装核心工具 CUDA Toolkit</h3><p>CUDA Toolkit是NVIDIA公司面向GPU编程提供的基础工具包，也是驱动显卡计算的核心技术工具。 该工具目前仅仅面向NVIDIA公司所生产的各类显卡，不支持AMD公司或英特尔公司的显卡产品，如果没有NVIDIA公司的显卡，那么只能使用基于CPU版本的Keras深度学习框架。 目前NVIDIA显卡中支持CUDA包含GeForce\TESLA\QUADRO三个系列，市面上常见的系列显卡GTX、GT、M开头的都支持CUDA，包括笔记本类显卡。 在近期上市的GeForce GTX 1080、GeForce GTX 1070仅仅只能使用CUDA Toolkit 8.0，建议采用7.5版本，按照自己的系统进行选择性的下载。 在下载之后，按照步骤安装，不建议新手修改安装目录，同上，环境不需要配置，安装程序会自动配置好。<br><strong>注：根据我的配置情况，我选择的是cuda7.5</strong></p>
+<h4 id="（1）下载cuda7-5源文件"><a href="#（1）下载cuda7-5源文件" class="headerlink" title="（1）下载cuda7.5源文件"></a>（1）下载cuda7.5源文件</h4><p>下载地址：<a href="https://developer.nvidia.com/cuda-downloads/" target="_blank" rel="external">https://developer.nvidia.com/cuda-downloads/</a><br><img src="http://img.blog.csdn.net/20151202095308841" alt="enter image description here"></p>
+<h4 id="（2）环境变量配置"><a href="#（2）环境变量配置" class="headerlink" title="（2）环境变量配置"></a>（2）环境变量配置</h4><p>下载完之后进行安装，安装时间有点长，请耐心等待，默认是安装在c盘目录下，你也可以更改安装目录， cuda7.5安装完成之后在系统环境变量中自动配置了两个系统变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CUDA_PATH：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5</div><div class="line">CUDA_PATH_V7_5：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5</div></pre></td></tr></table></figure></p>
+<p>但是为了之后的vs2013的配置做准备我们需要在配置五个系统变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CUDA_BIN_PATH：%CUDA_PATH%\bin </div><div class="line">CUDA_LIB_PATH：%CUDA_PATH%\lib\Win32 </div><div class="line">CUDA_SDK_BIN：%CUDA_SDK_PATH%\bin\Win64 </div><div class="line">CUDA_SDK_LIB：%CUDA_SDK_PATH%\common\lib\x64 </div><div class="line">CUDA_SDK_PATH：C:\ProgramData\NVIDIA Corporation\CUDA Samples\v7.5</div></pre></td></tr></table></figure></p>
+<p>在系统环境变量path后添加如下内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">;%CUDA_LIB_PATH%;%CUDA_BIN_PATH%;%CUDA_SDK_LIB_PATH%;%CUDA_SDK_BIN_PATH%;</div></pre></td></tr></table></figure></p>
+<p>测试是否成功 ,进入cmd，输入nvcc -V命令，如图所示，表示cuda安装成功。<br><img src="/2017/05/07/深度学习小白记/nvcc.png" alt=""></p>
+<h4 id="（3）加速库CuDNN（可选）"><a href="#（3）加速库CuDNN（可选）" class="headerlink" title="（3）加速库CuDNN（可选）"></a>（3）加速库CuDNN（可选）</h4><p>官网下载需要注册开发者用户，也可以在网上寻找相关的共享包。具体使用办法为找到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5</div></pre></td></tr></table></figure></p>
+<p>目录将压缩包内<strong>bin、include、lib</strong>三个文件夹解压至此即可</p>
+</blockquote>
+<h3 id="4-测试对比"><a href="#4-测试对比" class="headerlink" title="4.测试对比"></a>4.测试对比</h3><blockquote>
+<p>速度测试 新建一个文件test.py，内容为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> theano <span class="keyword">import</span> function, config, shared, sandbox</div><div class="line"><span class="keyword">import</span> theano.tensor <span class="keyword">as</span> T</div><div class="line"><span class="keyword">import</span> numpy</div><div class="line"><span class="keyword">import</span> time</div><div class="line">vlen = <span class="number">10</span> * <span class="number">30</span> * <span class="number">768</span> </div><div class="line">iters = <span class="number">1000</span></div><div class="line">rng = numpy.random.RandomState(<span class="number">22</span>)</div><div class="line">x = shared(numpy.asarray(rng.rand(vlen), config.floatX))</div><div class="line">f = function([], T.exp(x))</div><div class="line">print(f.maker.fgraph.toposort())</div><div class="line">t0 = time.time()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(iters):</div><div class="line">    r = f()</div><div class="line">t1 = time.time()</div><div class="line">print(<span class="string">"Looping %d times took %f seconds"</span> % (iters, t1 - t0))</div><div class="line">print(<span class="string">"Result is %s"</span> % (r,))</div><div class="line"><span class="keyword">if</span> numpy.any([isinstance(x.op, T.Elemwise) <span class="keyword">for</span> x <span class="keyword">in</span> f.maker.fgraph.toposort()]):</div><div class="line">    print(<span class="string">'Used the cpu'</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">'Used the gpu'</span>)</div></pre></td></tr></table></figure>
+<p><strong>修改.theanorc.txt中的device为cpu/gpu，测试不同硬件的运算速度</strong></p>
+</blockquote>
+<hr>
+<h1 id="二，在Ubuntu-14-04-64位系统下安装keras环境-GPU运算"><a href="#二，在Ubuntu-14-04-64位系统下安装keras环境-GPU运算" class="headerlink" title="二，在Ubuntu 14.04 64位系统下安装keras环境(GPU运算)"></a>二，在Ubuntu 14.04 64位系统下安装keras环境(GPU运算)</h1><blockquote>
+<p>备注：我的电脑配置为Intel i5 + Nvidia GTX 1060</p>
+<h2 id="1-系统初始配置与依赖库的安装"><a href="#1-系统初始配置与依赖库的安装" class="headerlink" title="1.系统初始配置与依赖库的安装"></a>1.系统初始配置与依赖库的安装</h2><p><strong>一.安装显卡驱动</strong><br>因为GTX 1060显卡是比较新出的，14.04系统并不能很好的支持，还需要自己去折腾相关驱动，所以安装整个过程花了很多的功夫。在这记录一下，首先去英伟达官网下载对应的驱动文件。<br>下载地址：<a href="http://www.geforce.cn/drivers" target="_blank" rel="external">http://www.geforce.cn/drivers</a> (请自行手动选择驱动，将下载的run文件放置在主文件夹下）<br>重启电脑，在登录页面按<strong>Ctrl+Alt+F1</strong>进入<strong>tty1</strong>，输入<strong>sudo service lightdm stop</strong>，关闭lightdm。进入下载驱动的目录，执行以下命令开始安装驱动<strong>sudo sh NVIDIA-Linux-XXX.run</strong>安装过程中按提示操作就可以了，一般选择<strong>yes</strong>或<strong>ok</strong>就好。<br>安装结束之后，使用以下命令<strong>sudo reboot</strong>重新启动电脑，进入桌面查看系统设置，检测看系统是否正常识别显卡即可</p>
+<p><strong>二.安装运行环境</strong><br>在系统安装好之后，在 系统设置-&gt;软件更新 中更换国内镜像源，之后使用快捷键<strong>Ctrl+Alt+T</strong>打开终端，输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure></p>
+<p>接着安装依赖库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y python-dev python-pip python-nose gcc g++ git gfortran;</div><div class="line">sudo apt install -y libopenblas-dev liblapack-dev libatlas-base-dev;</div><div class="line">sudo apt install -y python-numpy python-scipy</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="2-CUDA-Toolkit的安装"><a href="#2-CUDA-Toolkit的安装" class="headerlink" title="2.CUDA Toolkit的安装"></a>2.CUDA Toolkit的安装</h2><blockquote>
+<p>CUDA Toolkit选择合适的版本进行下载，因为CUDA 7.5版本与GTX 1060还是不太融洽。我选择了更高版本的CUDA 8.0，强烈建议使用.run格式的下载包(不然容易与原来的驱动冲突)。下载完后，终端cd至相应文件夹，输入：<strong>sudo sh cuda_8.0.27_liunx.run</strong>。安装中根据提示选择相关内容，<strong>请不要选择安装驱动</strong>，这样即可一路安装结束。结束继续输入<strong>sudo apt-get update;sudo apt install cuda</strong>。<br>安装完毕后，输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH=/usr/local/cuda-8.0/bin:$PATH'</span> &gt;&gt; ~/.bashrc;</div><div class="line"><span class="built_in">echo</span> <span class="string">'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH'</span> &gt;&gt; ~/.bashrc;</div><div class="line"><span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure></p>
+<p>CUDA环境也配置完了 验证是否配置成功，可以尝试输入：<strong>nvcc -V</strong>,可以查看到输出nvcc编译器的版本<br><strong>（可选）加速库CuDNN</strong><br>官网下载需要注册开发者用户，也可以在网上寻找相关的共享包。具体使用办法为下载到<strong>cudnn-8.0-linux-x64-v5.0-ga.tgz</strong>压缩包，执行下面语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sudo tar -xzvf cudnn-8.0-linux-x64-v5.0-ga.tgz</div><div class="line">cd cudnn-8.0-linux-x64-v5.0-ga</div><div class="line">cd cuda/include</div><div class="line">sudo cp *h /usr/local/include</div><div class="line">cd ../lib64</div><div class="line">sudo cp lib* /usr/local/lib/</div><div class="line">cd /usr/local/lib</div><div class="line">sudo chmod +r libcudnn.so.5.0.5</div><div class="line">sudo ln -sf libcudnn.so.5.0.5 libcudnn.so.5</div><div class="line">sudo ln -sf libcudnn.so.5 libcudnn.so</div><div class="line">sudo ldconfig</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="3-Theano以及Keras的安装"><a href="#3-Theano以及Keras的安装" class="headerlink" title="3.Theano以及Keras的安装"></a>3.Theano以及Keras的安装</h2><blockquote>
+<p>首先在终端输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install theano</div><div class="line">sudo pip install keras</div></pre></td></tr></table></figure></p>
+<p>配置Theano,在终端中输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit ~/.theanorc</div></pre></td></tr></table></figure></p>
+<p>添加下面语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[global]</div><div class="line">floatX=float32</div><div class="line">device=gpu</div><div class="line">[blas]</div><div class="line">ldflags = -lopenblas</div><div class="line">[nvcc]</div><div class="line">fastmath = True</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h2><blockquote>
+<p><strong>请参考上面windows下情况</strong></p>
+</blockquote>
+<hr>
+<p><strong>开发环境教程结束，谢谢！！！</strong></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2017/05/07/深度学习小白记/" data-title="深度学习小白记(0)-开发环境安装教程 | Decodeaz&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/05/07/树莓派安装opencv/"  title="树莓派安装opencv">
+ <strong>NEXT:</strong><br/> 
+ <span>树莓派安装opencv
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一，在windows-10-64位系统下安装keras环境-GPU运算"><span class="toc-number">1.</span> <span class="toc-text">一，在windows 10 64位系统下安装keras环境(GPU运算)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装基础工具-Microsoft-Visual-Studio-2013"><span class="toc-number">1.1.</span> <span class="toc-text">1.安装基础工具 Microsoft Visual Studio 2013</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装Python环境-推荐Anaconda"><span class="toc-number">1.2.</span> <span class="toc-text">2.安装Python环境 - 推荐Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（1）安装Anaconda"><span class="toc-number">1.2.1.</span> <span class="toc-text">（1）安装Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）安装Mingw，添加相关环境变量"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">（2）安装Mingw，添加相关环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）安装keras相关模块"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">（3）安装keras相关模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装核心工具-CUDA-Toolkit"><span class="toc-number">1.2.2.</span> <span class="toc-text">3.安装核心工具 CUDA Toolkit</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（1）下载cuda7-5源文件"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">（1）下载cuda7.5源文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）环境变量配置"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">（2）环境变量配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）加速库CuDNN（可选）"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">（3）加速库CuDNN（可选）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试对比"><span class="toc-number">1.2.3.</span> <span class="toc-text">4.测试对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二，在Ubuntu-14-04-64位系统下安装keras环境-GPU运算"><span class="toc-number">2.</span> <span class="toc-text">二，在Ubuntu 14.04 64位系统下安装keras环境(GPU运算)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-系统初始配置与依赖库的安装"><span class="toc-number">2.1.</span> <span class="toc-text">1.系统初始配置与依赖库的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CUDA-Toolkit的安装"><span class="toc-number">2.2.</span> <span class="toc-text">2.CUDA Toolkit的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Theano以及Keras的安装"><span class="toc-number">2.3.</span> <span class="toc-text">3.Theano以及Keras的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-测试"><span class="toc-number">2.4.</span> <span class="toc-text">3.测试</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="http://yoursite.com" target="_blank" title="XY">XY</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

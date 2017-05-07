@@ -1,0 +1,312 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CuraEngine源代码编译安装 | Decodeaz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="XY">
+    
+    <meta name="description" content="Ubuntu Desktop 14.04 64位系统下载源文件
+推荐使用git命令，克隆源代码到本地。如没有安装git，请终端输入sudo apt-get install git 
+下载 CuraEngine源代码:git clone https://github.com/Ultimaker/Cur">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Decodeaz&#39;s Blog" title="Decodeaz&#39;s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Decodeaz&#39;s Blog">Decodeaz&#39;s Blog</a></h1>
+				<h2 class="blog-motto">我的混乱数据~</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">存档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/07/CuraEngine源代码编译安装/" title="CuraEngine源代码编译安装" itemprop="url">CuraEngine源代码编译安装</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="XY">XY</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-05-07T07:48:01.480Z" itemprop="datePublished">2017-05-07</time>
+    更新日期:<time datetime="2017-05-07T08:16:29.974Z" itemprop="dateModified">2017-05-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu-Desktop-14-04-64位系统"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu Desktop 14.04 64位系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载源文件"><span class="toc-number">1.1.</span> <span class="toc-text">下载源文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译环境配置"><span class="toc-number">1.2.</span> <span class="toc-text">编译环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码编译"><span class="toc-number">1.3.</span> <span class="toc-text">源码编译</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-Protobuf"><span class="toc-number">1.3.1.</span> <span class="toc-text">Install Protobuf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-LibArcus"><span class="toc-number">1.3.2.</span> <span class="toc-text">Install LibArcus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-CuraEngine"><span class="toc-number">1.3.3.</span> <span class="toc-text">Install CuraEngine</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h2 id="Ubuntu-Desktop-14-04-64位系统"><a href="#Ubuntu-Desktop-14-04-64位系统" class="headerlink" title="Ubuntu Desktop 14.04 64位系统"></a>Ubuntu Desktop 14.04 64位系统</h2><h3 id="下载源文件"><a href="#下载源文件" class="headerlink" title="下载源文件"></a>下载源文件</h3><blockquote>
+<p>推荐使用<strong>git</strong>命令，克隆源代码到本地。如没有安装git，请终端输入<strong>sudo apt-get install git </strong></p>
+<p>下载 <strong>CuraEngine</strong>源代码:<br><strong>git clone <a href="https://github.com/Ultimaker/CuraEngine.git" target="_blank" rel="external">https://github.com/Ultimaker/CuraEngine.git</a> </strong> </p>
+<p>下载<strong>libArcus</strong>源代码:<br><strong>git clone <a href="https://github.com/Ultimaker/libArcus.git" target="_blank" rel="external">https://github.com/Ultimaker/libArcus.git</a></strong></p>
+<p>下载<strong>protobuf</strong>源代码:<br><strong>git cllone <a href="https://github.com/google/protobuf.git" target="_blank" rel="external">https://github.com/google/protobuf.git</a></strong></p>
+<p>PS:如果下载速度比较慢（可能墙），可以选择在上面的github的页面直接下载zip文件</p>
+</blockquote>
+<h3 id="编译环境配置"><a href="#编译环境配置" class="headerlink" title="编译环境配置"></a>编译环境配置</h3><blockquote>
+<p>编译前需要先前搭建必备的开发环境</p>
+<p><strong>python3</strong>以上的python环境，包含<strong>SIP</strong>工具包:<br><strong>sudo apt-get install python3-dev python3-sip python3-sip-dev</strong></p>
+<p>ls<strong>protobuf</strong>相关工具包:<br><strong>sudo apt-get install libtool autoconf gawk</strong></p>
+<p><strong>cmake，gcc</strong>相关编译环境包:（以上编译环境如果使用apt安装，其安装版本过低。在编译安装过程会出现报错现象，这里介绍手动安装的方法）</p>
+<p><strong>cmake:</strong><br>在<a href="https://cmake.org/files/v3.3" target="_blank" rel="external">https://cmake.org/files/v3.3</a> 下选择 <strong>cmake-3.3.0-Linux-x86_64.tar.gz</strong>下载<br>终端读取到文件目录： <strong>sudo cp xx/cmake-3.3.0-Linux-x86_64.tar.gz /usr</strong><br>解压文件；<strong>sudo tar zxvf cmake-3.3.0-Linux-x86_64.tar.gz</strong><br>建立软连接： <strong>sudo ln -s /usr/cmake-3.3.0-Linux-x86_64/bin/* /usr/bin</strong><br>终端测试：<strong>cmake –version</strong> 输出：<strong>cmake version 3.3.0</strong>为正常</p>
+<p><strong>gcc,g++:</strong><br>在基础的apt源中gcc,g++版本为4.8.4，在编译中需要4.9.0版本以上<br>这里介绍将Ubuntu 14.04 的gcc/g++版本升级为4.9.X版本<br>首先在终端输入：<br><strong>sudo add-apt-repository ppa:ubuntu-toolchain-r/test</strong><br><strong>sudo apt-get update</strong><br><strong>sudo apt-get install gcc-4.9 g++-4.9</strong><br>测试版本：终端输入-&gt;<strong>gcc -v</strong> 若出现<strong>gcc version 4.9.X</strong>则成功，无需下面步骤。否则执行下面步骤<br>将4.9版本的gcc/g++设置为默认：<br><strong>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 –slave /usr/bin/g++ g++ /usr/bin/g++-4.9</strong><br>再次终端输入：<strong>gcc -v</strong>测试</p>
+</blockquote>
+<h3 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h3><h4 id="Install-Protobuf"><a href="#Install-Protobuf" class="headerlink" title="Install Protobuf"></a>Install Protobuf</h4><blockquote>
+<p><strong>cd protobuf</strong><br><strong>./autogen.sh</strong>(若报错：权限不够，请先<strong>sudo chmod +x autogen.sh</strong>)<br><strong>./configure</strong><br><strong>make</strong><br><strong>sudo make install</strong></p>
+</blockquote>
+<h4 id="Install-LibArcus"><a href="#Install-LibArcus" class="headerlink" title="Install LibArcus"></a>Install LibArcus</h4><blockquote>
+<p><strong>cd libArus</strong><br><strong>mkdir build &amp;&amp; cd build</strong><br><strong>cmake ..</strong><br><strong>make</strong><br><strong>sudo make install</strong></p>
+</blockquote>
+<h4 id="Install-CuraEngine"><a href="#Install-CuraEngine" class="headerlink" title="Install CuraEngine"></a>Install CuraEngine</h4><blockquote>
+<p><strong>cd CuraEngine</strong><br><strong>mkdir build &amp;&amp; cd build</strong><br><strong>cmake ..</strong><br><strong>make</strong></p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2017/05/07/CuraEngine源代码编译安装/" data-title="CuraEngine源代码编译安装 | Decodeaz&#39;s Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/05/07/树莓派安装opencv/" title="树莓派安装opencv">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  树莓派安装opencv</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/05/07/Django POST错误/"  title="Django POST错误">
+ <strong>NEXT:</strong><br/> 
+ <span>Django POST错误
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu-Desktop-14-04-64位系统"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu Desktop 14.04 64位系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载源文件"><span class="toc-number">1.1.</span> <span class="toc-text">下载源文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译环境配置"><span class="toc-number">1.2.</span> <span class="toc-text">编译环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码编译"><span class="toc-number">1.3.</span> <span class="toc-text">源码编译</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-Protobuf"><span class="toc-number">1.3.1.</span> <span class="toc-text">Install Protobuf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-LibArcus"><span class="toc-number">1.3.2.</span> <span class="toc-text">Install LibArcus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-CuraEngine"><span class="toc-number">1.3.3.</span> <span class="toc-text">Install CuraEngine</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="http://yoursite.com" target="_blank" title="XY">XY</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
